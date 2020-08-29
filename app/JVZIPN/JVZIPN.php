@@ -6,7 +6,7 @@ namespace App\JVZIPN;
 
 class JVZIPN
 {
-    function jvzipnVerification($post) {
+    public static function jvzipnVerification($post) {
         $secretKey = env("JVZIPN_SECRET_KEY");
         $pop = "";
         $ipnFields = array();
