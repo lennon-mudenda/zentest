@@ -71,7 +71,7 @@ class Customer extends Model
         $user = self::where('email', $email)->first();
         if($user)
             return $user;
-        return User::create([
+        return Customer::create([
             'ccustname' => $name,
             'ccuststate' => $state,
             'ccustcc' => $country,
