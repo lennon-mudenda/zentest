@@ -19,7 +19,7 @@ class Customer extends Model
 {
 
     public $table = 'customers';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -64,5 +64,18 @@ class Customer extends Model
     public function transactions()
     {
         return $this->hasMany(\App\Models\Transaction::class, 'customer_id');
+    }
+
+    public static function get_user($email, $name, $state, $country)
+    {
+        $user = self::where('email', $email)->first();
+        if($user)
+            return $user;
+        return User::create([
+            'ccustname' => $name,
+            'ccuststate' => $state,
+            'ccustcc' => $country,
+            'email' => $email
+        ]);
     }
 }
