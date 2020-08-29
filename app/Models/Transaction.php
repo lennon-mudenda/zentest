@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model as Model;
 /**
  * Class Transaction
  * @package App\Models
- * @version August 29, 2020, 9:14 am UTC
+ * @version August 29, 2020, 2:21 pm UTC
  *
  * @property \App\Models\Customer customer
  * @property integer customer_id
