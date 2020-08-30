@@ -40,6 +40,11 @@ class CustomerAPIController extends AppBaseController
             $request->get('limit')
         );
 
+        foreach ($customers as $customer)
+        {
+            $customer->transactions;
+        }
+
         return $this->sendResponse($customers->toArray(), 'Customers retrieved successfully');
     }
 
