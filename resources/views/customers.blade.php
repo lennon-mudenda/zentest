@@ -3,19 +3,26 @@
 @section('title', 'Customers')
 
 @section('content_header')
-    <h1>Dashboard</h1>
+    <h1>Customers</h1>
 @stop
 
 @section('content')
     <div id="app">
-
+        <div>
+            <div class="container-fluid">
+                @include('partials.customers-table')
+            </div>
+        </div>
+        @include('partials.customer-delete')
+        @include('partials.customer-update')
+        @include('partials.customer-detail')
     </div>
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
+
 @stop

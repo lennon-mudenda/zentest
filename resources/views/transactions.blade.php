@@ -8,14 +8,21 @@
 
 @section('content')
     <div id="app">
-
+        <div>
+            <div class="container-fluid">
+                @include('partials.transactions-table')
+            </div>
+        </div>
+        @include('partials.transaction-delete')
+        @include('partials.transaction-update')
+        @include('partials.transaction-detail')
     </div>
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
+
 @stop
