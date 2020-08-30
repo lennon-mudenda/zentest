@@ -53,5 +53,5 @@ Copy the generated JVZIPN_SECRET_KEY value and add it to jvzoo dashboard.
 <br>
 Depending on where the application ends up being hosted add the following to jvzoo dashboard where it needs the Instant Notification URL
 <br>
-`http://www.yourdomain.com/api/v1/JVZIPN/handler`
+`http://www.yourdomain.com/api/JVZIPN/handler`
 
