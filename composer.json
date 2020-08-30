@@ -12,6 +12,7 @@
         "ext-mbstring": "*",
         "doctrine/dbal": "~2.3",
         "fideloper/proxy": "^4.0",
+        "fzaninotto/faker": "^1.9",
         "guzzlehttp/guzzle": "^6.5",
         "infyomlabs/laravel-generator": "6.0.x-dev",
         "jeroennoten/laravel-adminlte": "^3.4",
@@ -21,7 +22,6 @@
     },
     "require-dev": {
         "facade/ignition": "^1.4",
-        "fzaninotto/faker": "^1.9.1",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^3.0",
         "phpunit/phpunit": "^8.0"

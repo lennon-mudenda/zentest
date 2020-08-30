@@ -81,7 +81,7 @@ const app = new Vue({
         loadCustomers()
         {
             this.get(
-                '/api/v1/customers',
+                '/api/customers',
                 function (data, error, vueApp) {
                     if(error)
                     {
@@ -99,7 +99,7 @@ const app = new Vue({
         loadTransactions()
         {
             this.get(
-                '/api/v1/transactions',
+                '/api/transactions',
                 function (data, error, vueApp) {
                     if(error)
                     {
@@ -117,7 +117,7 @@ const app = new Vue({
         loadCustomer(id)
         {
             this.get(
-                `/api/v1/customers/${id}`,
+                `/api/customers/${id}`,
                 function (data, error, vueApp) {
                     if(error)
                     {
@@ -135,7 +135,7 @@ const app = new Vue({
         loadTransaction(id)
         {
             this.get(
-                `/api/v1/transactions/${id}`,
+                `/api/transactions/${id}`,
                 function (data, error, vueApp) {
                     if(error)
                     {
@@ -154,7 +154,7 @@ const app = new Vue({
         {
             let customer = this.customer;
             this.update(
-                `/api/v1/customers/${customer.id}`,
+                `/api/customers/${customer.id}`,
                 customer,
                 function (data, error, vueApp) {
                     if(error)
@@ -174,7 +174,7 @@ const app = new Vue({
         {
             let transaction = this.transaction;
             this.update(
-                `/api/v1/transactions/${transaction.id}`,
+                `/api/transactions/${transaction.id}`,
                 transaction,
                 function (data, error, vueApp) {
                     if(error)
@@ -194,7 +194,7 @@ const app = new Vue({
         {
             let customer = this.customer;
             this.delete(
-                `/api/v1/customers/${customer.id}`,
+                `/api/customers/${customer.id}`,
                 function (data, error, vueApp) {
                     if(error)
                     {
