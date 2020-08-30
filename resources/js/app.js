@@ -29,12 +29,41 @@ const app = new Vue({
 
     data: {
         customers: [],
+        customers_page: 1,
+        transactions_page: 1,
         transactions: [],
         customer: {
-
+            id: 0,
+            ccustname: '',
+            email: '',
+            ccuststate: '',
+            ccustcc: '',
+            transactions: []
         },
         transaction: {
-
+            id: 0,
+            customer_id: 0,
+            cproditem: '',
+            cprodtitle: '',
+            cprodtype: '',
+            ctransaction: '',
+            ctransaffiliate: '',
+            ctransamount: 0,
+            ctranspaymentmethod: '',
+            ctransvendor: '',
+            ctransreceipt: '',
+            cupsellreceipt: '',
+            caffitid: '',
+            cvendthru: '',
+            cverify: '',
+            ctranstime: '',
+            customer: {
+                id: 0,
+                ccustname: '',
+                email: '',
+                ccuststate: '',
+                ccustcc: '',
+            }
         }
     },
 
@@ -123,9 +152,10 @@ const app = new Vue({
 
         updateCustomer()
         {
+            let customer = this.customer;
             this.update(
-                `/api/v1/customers/${this.customer.id}`,
-                this.customer,
+                `/api/v1/customers/${customer.id}`,
+                customer,
                 function (data, error, vueApp) {
                     if(error)
                     {
@@ -142,9 +172,10 @@ const app = new Vue({
 
         updateTransaction()
         {
+            let transaction = this.transaction;
             this.update(
-                `/api/v1/transactions/${this.transaction.id}`,
-                this.transaction,
+                `/api/v1/transactions/${transaction.id}`,
+                transaction,
                 function (data, error, vueApp) {
                     if(error)
                     {
@@ -159,10 +190,11 @@ const app = new Vue({
             );
         },
 
-        deleteCustomer(id)
+        deleteCustomer()
         {
+            let customer = this.customer;
             this.delete(
-                `/api/v1/customers/${id}`,
+                `/api/v1/customers/${customer.id}`,
                 function (data, error, vueApp) {
                     if(error)
                     {
@@ -170,17 +202,20 @@ const app = new Vue({
                     }
                     else
                     {
-
+                        vueApp.customers = vueApp.customers.filter(function (c) {
+                            return c.id !== customer.id;
+                        });
                     }
                 },
                 this
             );
         },
 
-        deleteTransaction(id)
+        deleteTransaction()
         {
+            let transaction = this.transaction;
             this.delete(
-                `/api/v1/transactions/${id}`,
+                `/api/v1/transactions/${transaction.id}`,
                 function (data, error, vueApp) {
                     if(error)
                     {
@@ -188,20 +223,71 @@ const app = new Vue({
                     }
                     else
                     {
-
+                        vueApp.transactions = vueApp.transactions.filter(function (t) {
+                            return t.id !== transaction.id;
+                        });
                     }
                 },
                 this
             );
+        },
+
+        increase_cust_page()
+        {
+            this.customers_page += 1;
+            if(this.total_cust_pages < this.customers_page) this.customers_page = this.total_cust_pages;
+        },
+
+        decrease_cust_page()
+        {
+            this.customers_page -= 1;
+            if(0 > this.customers_page) this.customers_page = 1;
+        },
+
+        increase_trans_page()
+        {
+            this.transactions_page += 1;
+            if(this.total_trans_pages < this.transactions_page) this.transactions_page = this.total_cust_pages;
+        },
+
+        decrease_trans_page()
+        {
+            this.transactions_page -= 1;
+            if(0 > this.customers_page) this.transactions_page = 1;
         }
     },
 
     computed: {
+        filtered_transactions()
+        {
+            return this.transactions;
+        },
 
+        filtered_customers()
+        {
+            return this.customers
+        },
+
+        total_cust_pages()
+        {
+            return Math.ceil(this.filtered_customers.length / 10);
+        },
+
+        total_trans_pages()
+        {
+            return Math.ceil(this.filtered_transactions.length / 10);
+        }
     },
 
     mounted()
     {
-
+        if(window.location.pathname === '/customers')
+        {
+            this.loadCustomers();
+        }
+        else if(window.location.pathname === '/transactions')
+        {
+            this.loadTransactions();
+        }
     }
 });
