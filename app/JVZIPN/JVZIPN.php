@@ -7,6 +7,12 @@ namespace App\JVZIPN;
 class JVZIPN
 {
     public static function jvzipnVerification($post) {
+
+        return self::calculateVerificationCode($post) == $post["cverify"];
+    }
+
+    public static function calculateVerificationCode($post)
+    {
         $secretKey = env("JVZIPN_SECRET_KEY");
         $pop = "";
         $ipnFields = array();
@@ -29,6 +35,6 @@ class JVZIPN
         }
         $calcedVerify = sha1($pop);
         $calcedVerify = strtoupper(substr($calcedVerify,0,8));
-        return $calcedVerify == $post["cverify"];
+        return $calcedVerify;
     }
 }
