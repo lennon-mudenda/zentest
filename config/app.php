@@ -121,6 +121,8 @@ return [
 
     'key' => env('APP_KEY'),
 
+    'jvzipn_secret' => env('JVZIPN_SECRET_KEY'),
+
     'cipher' => 'AES-256-CBC',
 
     /*
