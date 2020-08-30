@@ -48,4 +48,10 @@ Start up the application.
 `php artisan serve`
 <br />
 <br />
+Copy the generated JVZIPN_SECRET_KEY value and add it to jvzoo dashboard.
+<br>
+<br>
+Depending on where the application ends up being hosted add the following to jvzoo dashboard where it needs the Instant Notification URL
+<br>
+`http://www.yourdomain.com/api/v1/JVZIPN/handler`
 
