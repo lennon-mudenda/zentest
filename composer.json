@@ -9,14 +9,15 @@
     "license": "MIT",
     "require": {
         "php": "^7.2",
+        "ext-mbstring": "*",
         "doctrine/dbal": "~2.3",
         "fideloper/proxy": "^4.0",
         "guzzlehttp/guzzle": "^6.5",
         "infyomlabs/laravel-generator": "6.0.x-dev",
+        "jeroennoten/laravel-adminlte": "^3.4",
         "laravel/framework": "^6.2",
         "laravel/tinker": "^2.0",
-        "laravel/ui": "^1.2",
-        "ext-mbstring": "*"
+        "laravel/ui": "^1.2"
     },
     "require-dev": {
         "facade/ignition": "^1.4",

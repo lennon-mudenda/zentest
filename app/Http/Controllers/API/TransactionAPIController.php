@@ -39,6 +39,10 @@ class TransactionAPIController extends AppBaseController
             $request->get('skip'),
             $request->get('limit')
         );
+        foreach ($transactions as $transaction)
+        {
+            $transaction->customer;
+        }
 
         return $this->sendResponse($transactions->toArray(), 'Transactions retrieved successfully');
     }
