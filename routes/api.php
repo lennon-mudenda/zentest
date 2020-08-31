@@ -22,10 +22,25 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/JVZIPN/handler', 'API\JVZIPNAPIController@handler');
 
 
-Route::resource('users', 'UserAPIController');
+Route::resource('users', 'API\UserAPIController');
 
 
-Route::resource('customers', 'CustomerAPIController');
+Route::resource('customers', 'API\CustomerAPIController');
 
 
-Route::resource('transactions', 'TransactionAPIController');
+Route::resource('transactions', 'API\TransactionAPIController');
+
+Route::group([
+
+    'middleware' => 'api',
+    'namespace' => 'App\Http\Controllers',
+    'prefix' => 'auth'
+
+], function ($router) {
+
+    Route::post('login', 'API\AuthController@login');
+    Route::post('logout', 'API\AuthController@logout');
+    Route::post('refresh', 'API\AuthController@refresh');
+    Route::post('user', 'API\AuthController@user');
+
+});
