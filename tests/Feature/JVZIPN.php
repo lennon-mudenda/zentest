@@ -36,8 +36,10 @@ class JVZIPN extends TestCase
     public function testWithCorrectPayload()
     {
         $payload = $this->signPayload($this->generatePayload());
+        print(json_encode($payload));
 
         $response = $this->post('/api/JVZIPN/handler', $payload);
+        print(json_encode($response));
 
         $response->assertStatus(200);
     }
@@ -55,13 +57,13 @@ class JVZIPN extends TestCase
     {
         $faker = Faker::create();
         return [
-            'ccustname' => $faker->name,
-            'ccuststate' => $faker->countryCode,
-            'ccustcc' => $faker->countryCode,
+            'ccustname' => 'Lee Muddy',
+            'ccuststate' => 'TZ',
+            'ccustcc' => 'ZA',
             'ccustemail' => $faker->email,
-            'cproditem' => $faker->numberBetween(1000,10000),
-            'cprodtitle' => $faker->company,
-            'cprodtype' => $faker->company,
+            'cproditem' => $faker->numberBetween(1000,10000).'',
+            'cprodtitle' => 'Lakers',
+            'cprodtype' => 'Lakers',
             'ctransaction' => $this->transactions[$faker->numberBetween(0,6)],
             'ctransaffiliate' => $faker->lastName,
             'ctransamount' => $faker->numberBetween(1000,100000),
@@ -70,7 +72,7 @@ class JVZIPN extends TestCase
             'ctransreceipt' => $faker->lastName,
             'cupsellreceipt' => $faker->lastName,
             'caffitid' => $faker->lastName,
-            'cvendthru' => $faker->paragraph,
+            'cvendthru' => $faker->lastName,
             'cverify' => '',
             'ctranstime' => Carbon::now()->unix()
         ];

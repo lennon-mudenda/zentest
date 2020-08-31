@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::post('/JVZIPN/handler', 'API/JVZIPNAPIController@handler');
+Route::post('/JVZIPN/handler', 'API\JVZIPNAPIController@handler');
 
 
 Route::resource('users', 'UserAPIController');
